@@ -1,4 +1,5 @@
-export class View <T>{ // usamos o <T> para definir a tipagem GENÉRICA para a classe. As filhas terão de definir qual a tipagem a ser utilizada, para substitutir a genérica de acordo com a necessidade.
+export abstract class View <T>{ // usamos o <T> para definir a tipagem GENÉRICA para a classe. As filhas terão de definir qual a tipagem a ser utilizada, para substitutir a genérica de acordo com a necessidade.
+// dentro do <> pode ser usado qualquer caractere para identificar o genérico. (T é só uma convenção pra Type)
 
   protected elemento: HTMLElement;
 
@@ -6,11 +7,7 @@ export class View <T>{ // usamos o <T> para definir a tipagem GENÉRICA para a c
     this.elemento = document.querySelector(seletor)
   }
 
-  template(modelo: T): string {
-    throw Error("Classe filha precisa implementar o método template")
-    // o método template foi criado na classe View porque o método update precisa dele definido na mesma classe
-    // porém, a classe filha precisará sobescrever o método para que ele passe, caso contrário apenas reotrnará um erro.
-  }
+  abstract template(modelo: T): string
 
   update(modelo: T): void {
     const template = this.template(modelo)
