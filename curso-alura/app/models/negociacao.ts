@@ -1,12 +1,12 @@
 export class Negociacao {
   constructor(
     private readonly _data: Date, // o _ é usado pois o getter não pode ter o mesmo nome que a propriedade!
-    public readonly _quantidade: number,
-    public readonly _valor: number
+    public readonly quantidade: number,
+    public readonly valor: number
   ) {}
 
   get volume(): number {
-    return this._quantidade * this._valor;
+    return this.quantidade * this.valor;
   }
 
   get data(): Date {
