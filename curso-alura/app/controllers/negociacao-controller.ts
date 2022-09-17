@@ -1,9 +1,11 @@
 import { Negociacao } from "../models/negociacao.js"; //NÃO ESQUECER DO .js NO FINAL
+import { Negociacoes } from "../models/negociacoes.js";
 
 export class NegociacaoController {
   private inputData: HTMLInputElement;
   private inputQuantidade: HTMLInputElement; // o private é uma propriedade única do TS, não tendo no JS
   private inputValor: HTMLInputElement;
+  private negociacoes = new Negociacoes()
 
   constructor() {
     this.inputData = document.querySelector("#data");
@@ -13,7 +15,9 @@ export class NegociacaoController {
 
   adiciona(): void {
     const negociacao = this.criaNegociacao();
-    console.log(negociacao);
+    this.negociacoes.adicionaNegociacoes(negociacao)
+    this.negociacoes.listaNegociacoes() // Como colocamos o método listaNegociacoes como ReadOnlyArray, se colocarmos um "." para ver os métodos disponíveis, ele irá listar somente os métodos que não alteram o Array, ou que se modificam, retornam uma nova instância do array com os dados modificados.
+    console.log(this.negociacoes.listaNegociacoes());
     this.limparFormulario();
   }
 
@@ -31,3 +35,4 @@ export class NegociacaoController {
     this.inputData.focus();
   }
 }
+

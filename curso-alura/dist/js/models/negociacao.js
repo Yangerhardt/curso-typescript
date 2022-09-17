@@ -1,17 +1,15 @@
 export class Negociacao {
-    constructor(data, quantidade, valor) {
-        (this._data = data), (this._quantidade = quantidade), (this._valor = valor);
-    }
-    get data() {
-        return this._data;
-    }
-    get quantidade() {
-        return this._quantidade;
-    }
-    get valor() {
-        return this._valor;
+    constructor(_data, // o _ é usado pois o getter não pode ter o mesmo nome que a propriedade!
+    _quantidade, _valor) {
+        this._data = _data;
+        this._quantidade = _quantidade;
+        this._valor = _valor;
     }
     get volume() {
-        return this._quantidade * this.valor;
+        return this._quantidade * this._valor;
+    }
+    get data() {
+        const data = new Date(this._data.getTime()); // programação defensiva criada para que o valor da data não possa ser alterado, mas que ainda precisa ser retornado para a leitura.
+        return data; // dessa forma, será retornado somente o valor da cópia da data, e não o valor da data original que não poderá ser alterada.
     }
 }
