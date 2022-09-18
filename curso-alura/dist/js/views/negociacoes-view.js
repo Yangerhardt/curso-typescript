@@ -14,7 +14,7 @@ export class NegociacoesView extends View {
         ${modelo.listaNegociacoes().map(negociacao => {
             return `
             <tr> 
-              <td>${new Intl.DateTimeFormat().format(negociacao.data)}</td> 
+              <td>${this.formatarData(negociacao.data)}</td> 
               <td>${negociacao.quantidade}</td> 
               <td>${negociacao.valor}</td> 
             </tr>
@@ -22,6 +22,9 @@ export class NegociacoesView extends View {
         }).join("")}
       </tbody>
     </table>
-    `; // o JOIN é usado porque se não, sempre que adicionassemos uma nova transação, ele colocaria uma vírgula separando elas, então serve justamente para eliminar essa vírgula e concatenar todo o conteúdo.
+    `;
+    }
+    formatarData(data) {
+        return new Intl.DateTimeFormat().format(data);
     }
 }

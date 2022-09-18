@@ -3,7 +3,9 @@
     "outDir": "dist/js", //pasta de arquivos onde serão colocados os arquvivos transformados em JS
     "target": "ES6",
     "noEmitOnError": true, // Não irá gerar um arquivo JS caso tenha um erro de compilação
-     "noImplicitAny": true //Não irá aceitar a tipagem ANY para as variáveis
+     "noImplicitAny": true, //Não irá aceitar a tipagem ANY para as variáveis
+     "removeComments": true, // Remove todos os comentários das versões JS.
+     "strictNullChecks": true, //Faz com que todos os queryselectors que retornem um resultado NULL necessitem de tratamento em tempo de desenvolvimento.
   },
   "include": ["app/**/*"] //vai pegar todos os arquivos da pasta app para transformar em Javascript
 }
